@@ -1,6 +1,6 @@
 # create-certificate
 
-for create certificate you need an poerpoint template (.pptx) and one .csv file which every row of this file consists of all informataions you want to add to template.
+for create certificate you need an powerpoint template (.pptx) and one .csv file which every row of this file consists of all informataions you want to add to template.
 
 the csv file should have a colunm "name" which is the name of output of every row.
 
