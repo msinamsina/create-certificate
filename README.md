@@ -12,6 +12,37 @@ second install unoconv:
 pip install unoconv
 ```
 
+install imagemagick
+```commandline
+sido apt install imagemagick
+```
+
+## Possible issues
+During conversion, two errors occur after running the convert command:
+
+```
+convert-im6.q16: not authorized `multiple_img.pdf' @ error/constitute.c/ReadImage/412.
+convert-im6.q16: no images defined `output-%3d.jpg' @ error/convert.c/ConvertImageCommand/3258.
+```
+
+For the first error, you can edit ```/etc/ImageMagick-6/policy.xml``` and change the following line:
+
+```commandline
+<policy domain="coder" rights="none" pattern="PDF" />
+```
+
+to 
+```commandline
+<policy domain="coder" rights="read|write" pattern="PDF" />
+```
+
+For the second error, this is because ghostscript has not been installed on the system. Try to install it:
+
+```commandline
+apt install ghostscript
+
+```
+
 # how to use:
 ```
 python main.py -l path/to/file.csv -t "path/to/file.pptx"

@@ -2,6 +2,7 @@ from pptx import Presentation
 import os
 import pandas as pd
 import argparse
+import time
 
 
 def main():
@@ -20,14 +21,15 @@ def main():
         print('List file not found')
         exit(1)
 
-    if not os.path.exists(args.output):
-        os.mkdir(args.output)
+    out_dir = args.output + '-' + time.strftime("%Y%m%d-%H%M%S")
+    if not os.path.exists(out_dir):
+        os.mkdir(out_dir)
 
     df = pd.read_csv(args.list)
 
     for index, row in df.iterrows():
         print(row.to_dict())
-        create_certificate_from_template(args.template, os.path.join(args.output,
+        create_certificate_from_template(args.template, os.path.join(out_dir,
                                          str(row['name'])+'.pptx'), row.to_dict(),
                                          )
 
@@ -48,7 +50,8 @@ def create_certificate_from_template(template, target, change_dict):
 
     # for Linux
     os.system(f'unoconv -f pdf "{target}"')
-    os.system('rm "{}"'.format(os.path.abspath(target)))
+    os.system(f'convert -density 300 {target[:-5]}.pdf -quality 100 {target[:-5]}.jpg')
+    os.system(f'rm "{os.path.abspath(target)}"')
     # for windows
     # os.system('unoconv.bat -f pdf "{}"'.format(os.path.abspath(target)))
 
