@@ -7,14 +7,14 @@ the csv file should have a colunm "name" which is the name of output of every ro
 # instalation
 first you should install *libreoffice4.4* use this [link](https://downloadarchive.documentfoundation.org/libreoffice/old/4.4.7.2/deb/x86_64/) to download and then use [this](https://sourcedigit.com/14874-install-libreoffice-4-4-ubuntu-14-04/) link for install struction.
 
-second install unoconv:
+second install requirement:
 ```
-pip install unoconv
+pip install -r requirement.txt 
 ```
 
 install imagemagick
 ```commandline
-sido apt install imagemagick
+sudo apt install imagemagick
 ```
 
 ## Possible issues
