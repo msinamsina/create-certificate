@@ -45,7 +45,7 @@ def create_certificate_from_template(template, target, change_dict):
                 for r, run in enumerate(paragraph.runs):
                     for phrase in change_dict:
                         if run.text == phrase:
-                            ppt.slides[s].shapes[ss].text_frame.paragraphs[p].runs[r].text = change_dict[phrase]
+                            ppt.slides[s].shapes[ss].text_frame.paragraphs[p].runs[r].text = str(change_dict[phrase])
     ppt.save(target)
 
     # for Linux
